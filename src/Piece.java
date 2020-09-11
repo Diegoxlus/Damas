@@ -1,4 +1,4 @@
-public class Piece {
+public abstract class Piece {
 
     private Color color;
 
