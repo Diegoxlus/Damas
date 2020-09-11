@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="400d72e0-6f93-4321-bfdb-2d03374ef6ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/King.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Men.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Piece.java" afterDir="false" />
     </list>
@@ -47,7 +46,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -72,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1599819317652</updated>
       <workItem from="1599819320154" duration="615000" />
-      <workItem from="1599820050423" duration="2388000" />
+      <workItem from="1599820050423" duration="3733000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto damas">
       <created>1599819725004</created>
@@ -81,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599819725005</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Piezas">
+      <created>1599823132880</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1599823132880</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,7 +106,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Proyecto damas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Proyecto damas" />
+    <MESSAGE value="Piezas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Piezas" />
   </component>
   <component name="masterDetails">
     <states>
