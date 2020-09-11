@@ -1,0 +1,73 @@
+@startuml
+
+title Relationships - Modelo de dominio
+
+class King
+class Piece
+class Men
+class Checkerboard
+class Square
+class Position{
++x
++y
+}
+class Player
+class WasteStack
+class Color
+class Game
+class Action
+class Movement
+class Jump
+class Turn
+
+class Goal
+class AllPiecesCaptured
+
+class MenUpMen
+class MoveRight
+class MoveLeft
+class PieceToWaste
+class JumpRight
+class JumpLeft
+
+Game *-down- "2" Player
+Game *-down- "1" Checkerboard
+Game *-down- "1" Turn
+Turn *-down- "2" Player
+
+WasteStack o--down- "0..23" Piece
+
+
+Piece *-down- "1" Color
+Piece <|-down-  Men
+Piece <|-down- King
+
+Action <|-down- Movement
+Action <|-down- Jump
+
+
+Movement <|-down- MoveLeft
+Movement <|-down- MoveRight
+Movement <|-down- MenUpMen
+Movement <|-down- PieceToWaste
+
+Jump <|-down- JumpRight
+Jump <|-down- JumpLeft
+
+
+Checkerboard o--down- "8x8" Square
+Square o--down- "0..1" Piece
+Square *-down- "1" Position
+
+
+
+Checkerboard *-down- "1" WasteStack
+
+Player *-down- Goal
+Player -down-> Checkerboard
+Goal <|-down- AllPiecesCaptured
+Goal ..> "*" Action
+Action ..> Position
+
+
+@enduml
