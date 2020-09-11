@@ -1,0 +1,53 @@
+@startuml
+
+title Relationships - Modelo de dominio
+
+
+
+class Width{
++value = 8
+}
+class Height{
++value = 8
+}
+class Token
+class Superdama
+class Dama
+class Board
+class Player
+class WasteStack
+class Color
+class Game
+class Move
+
+class TokenToToken
+class TokenRight
+class TokenLeft
+class TokenToWasteStack
+class TokenEatToken
+
+Game *-down- "2" Player: Composition
+Game *-down- "1" Board: Composition
+Token *-down- "1" Color: Composition
+Token <|-down- Dama: Inheritance
+Token <|-down- Superdama: Inheritance
+
+Superdama *-down- "2" Dama: Composition
+
+
+Move <|-down- TokenLeft: Inheritance
+Move <|-down- TokenRight: Inheritance
+Move <|-down- TokenToToken: Inheritance
+Move <|-down- TokenToWasteStack: Inheritance
+Move <|-down- TokenEatToken: Inheritance
+
+
+Collection o--down- "24" Token: Aggregation
+Collection *-down- "1" Width: Composition
+Collection *-down- "1" Height: Composition
+Board *-down- "1" Collection: Composition
+Board *-down- "1" WasteStack: Composition
+
+Player--Collection
+Player --> Move
+@enduml
