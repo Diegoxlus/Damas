@@ -40,6 +40,10 @@ public class CheckerBoard {
         }
     }
 
+    public void move(Movement movement){
+
+    }
+
     public void moveMen(int x, int y,int xf, int yf){
         //Comprobar que no se salga fuera del tablero
         //Comprobar que la posicion es valida( 1 pos a la derecha o izquierda, 1 pos hacia delante)
