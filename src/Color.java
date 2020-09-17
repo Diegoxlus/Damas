@@ -10,4 +10,14 @@ public class Color {
         this.color=color;
     }
 
+    @Override
+    public String toString() {
+        if(this.color == ChooseColor.BLACK){
+            return " X ";
+        }
+        else if(this.color == ChooseColor.WHITE){
+            return " O ";
+        }
+        else return "-";
+    }
 }
