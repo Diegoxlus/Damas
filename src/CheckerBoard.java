@@ -1,61 +1,65 @@
-import java.util.ArrayList;
-import java.util.List;
-
+import utils.Console;
+import utils.Message;
 
 public class CheckerBoard {
+
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final int WIDTH = 8;
+    public static final int HEIGHT = 8;
 
-
-    public static final int  WIDTH = 8;
-    public static final int  HEIGHT = 8;
-
-    public Piece[][] squares;
-    private boolean visible;
+    public Piece[][] pieces;
 
     public CheckerBoard() {
-        this.squares = new Piece[WIDTH][HEIGHT];
-        this.putBlackPiecesInCheckerBoard();
-        this.putWhitePiecesInCheckerBoard();
-        this.visible = false;
+        this.pieces = new Piece[WIDTH][HEIGHT];
+        this.putPieces();
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public void putBlackPiecesInCheckerBoard() {
-        for (int i = 0; i <HEIGHT/2-1; i++ ){
+    public void putPieces() {
+        this.fillNullPieces();
+        for (int i = 0; i <HEIGHT; i++ ){
             for (int j = 0; j<WIDTH; j++){
-                if((i+j)%2!=0){
-                    this.squares[i][j] = new Men(new Color(Color.ChooseColor.BLACK));
+
+            }
+        }
+    }
+
+    private void fillNullPieces(){
+        for (int i = 0; i<HEIGHT;i++){
+            for (int j= 0; j<WIDTH;j++){
+                if(isEmptySquare(i,j) || is4or5row(i)){
+                    this.pieces[i][j] = new Men(new Color(Color.ChooseColor.NULL));
                 }
             }
         }
     }
 
-    public void putWhitePiecesInCheckerBoard() {
-        for (int i = HEIGHT/2+1; i <HEIGHT; i++ ){
-            for (int j = 0; j < WIDTH; j++){
-                if((i+j)%2!=0){
-                    this.squares[i][j] =  new Men(new Color(Color.ChooseColor.WHITE));
-                }
+    private void putBlackOrWhitePiece(int i,int j){
+        if(!isEmptySquare(i,j) && !isEmptySquare(i,j)){
+            if(i<HEIGHT/2-1){
+                this.pieces[i][j] = new Men(new Color(Color.ChooseColor.BLACK));
+            } else if(i>HEIGHT/2){
+                this.pieces[i][j] = new Men(new Color(Color.ChooseColor.WHITE));
+            } else{
+                new Console().writeError(Error.WRONG_COORDINATES.toString());
             }
         }
     }
 
-    public void showCheckerBoard(){
+    private boolean isEmptySquare(int i , int j){
+        return (i+j)%2==0;
+    }
+    private boolean is4or5row(int row){
+        return row>2&&row<5;
+    }
+
+    public void show(){
         System.out.print(ANSI_GREEN+"    0  1  2  3  4  5  6  7" +ANSI_RESET);
         for (int i = 0; i< HEIGHT; i++){
             System.out.println("\n");
+            System.out.print(ANSI_GREEN+i+"  "+ANSI_RESET);
             for (int j = 0; j<WIDTH;j++){
-                if(j==0){
-                    System.out.print(ANSI_GREEN+i+"  "+ANSI_RESET);
-                }
-                if(this.squares[i][j]==null){
-                    System.out.print(" - ");
-                }
-                else System.out.print(this.squares[i][j].getColor().toString());
+                System.out.print(this.pieces[i][j].getColor().toString());
             }
 
         }

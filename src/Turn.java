@@ -11,14 +11,14 @@ public class Turn {
         //int numberPlayers = new LimitedIntDialog(Turn.NUMBER_PLAYERS).read(Message.NUMBER_PLAYERS);
         this.players = new Player[Turn.NUMBER_PLAYERS];
         for (int i = 0; i< Turn.NUMBER_PLAYERS; i++){
-            String namePlayer = new Console().readString(Message.NAME_PLAYERS);
-            this.players[i] = this.createPlayer(namePlayer, checkerBoard, i);
+            this.players[i] = this.createPlayer(i,checkerBoard);
         }
         this.active = NUMBER_PLAYERS - (NUMBER_PLAYERS-1);
-        checkerBoard.setVisible(true);
     }
-    private Player createPlayer(String name, CheckerBoard checkerBoard, int indexColor){
-        return  new Player(name,new Color(indexColor), checkerBoard);
+    private Player createPlayer(int indexColor, CheckerBoard checkerBoard){
+        Player player = new Player(new Color(indexColor), checkerBoard);
+        player.readAndSetName();
+        return player;
     }
 
     void play(){

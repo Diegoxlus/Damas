@@ -2,8 +2,10 @@ public class Color {
 
     public enum ChooseColor{
         WHITE,
-        BLACK
+        BLACK,
+        NULL
     }
+
     private ChooseColor color;
 
     public Color(ChooseColor color){
@@ -18,10 +20,14 @@ public class Color {
     public String toString() {
         if(this.color == ChooseColor.BLACK){
             return " X ";
-        }
-        else if(this.color == ChooseColor.WHITE){
+        } else if (this.color == ChooseColor.WHITE) {
             return " O ";
+        } else if (this.color == ChooseColor.NULL) {
+            return " - ";
+        } else{
+            return Error.WRONG_COLOR.toString();
         }
-        else return "-";
     }
+
+
 }

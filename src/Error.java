@@ -4,8 +4,9 @@ enum Error {
 
 	NOT_EMPTY("The square is not empty"),
 	NOT_OWNER("There is not a token of yours"),
-	SAME_COORDINATES("The origin and target squares are the same"),
+	SAME_COORDINATES("The origin and target pieces are the same"),
 	WRONG_COORDINATES("The coordinates are wrong"),
+	WRONG_COLOR("The piece has a wrong color"),
 	NULL_ERROR;
 
 	private String message;
@@ -23,4 +24,8 @@ enum Error {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return this.message;
+	}
 }
