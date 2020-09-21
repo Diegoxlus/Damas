@@ -1,6 +1,6 @@
 public class Color {
 
-    enum ChooseColor{
+    public enum ChooseColor{
         WHITE,
         BLACK
     }
@@ -8,6 +8,10 @@ public class Color {
 
     public Color(ChooseColor color){
         this.color=color;
+    }
+
+    public Color(int index){
+        this(ChooseColor.values()[index]);
     }
 
     @Override

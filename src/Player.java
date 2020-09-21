@@ -8,4 +8,8 @@ public class Player {
         this.color=color;
         this.checkerBoard = checkerBoard;
     }
+
+    void play(){
+
+    }
 }

@@ -3,6 +3,10 @@ import java.util.List;
 
 
 public class CheckerBoard {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
+
     public static final int  WIDTH = 8;
     public static final int  HEIGHT = 8;
 
@@ -40,34 +44,20 @@ public class CheckerBoard {
         }
     }
 
-    public void move(Movement movement){
-
-    }
-
-    public void moveMen(int x, int y,int xf, int yf){
-        //Comprobar que no se salga fuera del tablero
-        //Comprobar que la posicion es valida( 1 pos a la derecha o izquierda, 1 pos hacia delante)
-        //Comprobar que no hay un men enemigo para comer
-        //Comprobar que no se mueve hacia atras
-    }
-
-    public void jumpMen(int xo, int yo, int xf, int yf){
-        //Comprobar que no se salga fuera del tablero
-        //Comprobar que la posicion es valida( 2 pos a la derecha o izquierda, 2 pos hacia delante)
-        //Comprobar que hay un men enemigo para comer.
-        //Comprobar que no hay un men enemigo justo en la trayectoria para comer
-        //Comprobar que no se mueve hacia atras
-    }
-
     public void showCheckerBoard(){
+        System.out.print(ANSI_GREEN+"    0  1  2  3  4  5  6  7" +ANSI_RESET);
         for (int i = 0; i< HEIGHT; i++){
             System.out.println("\n");
             for (int j = 0; j<WIDTH;j++){
+                if(j==0){
+                    System.out.print(ANSI_GREEN+i+"  "+ANSI_RESET);
+                }
                 if(this.squares[i][j]==null){
                     System.out.print(" - ");
                 }
                 else System.out.print(this.squares[i][j].getColor().toString());
             }
+
         }
     }
 
