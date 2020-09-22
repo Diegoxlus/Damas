@@ -1,35 +1,25 @@
 package draughts;
 
-public class Color {
+import utils.Console;
 
-    public enum ChooseColor{
-        WHITE,
-        BLACK,
-        NULL
-    }
+public enum Color {
 
-    private ChooseColor color;
+    WHITE_COLOR(" O "),
+    BLACK_COLOR(" X "),
+    NULL_COLOR(" - ");
 
-    public Color(ChooseColor color){
+    private String color;
+
+    private Color(String color){
         this.color=color;
     }
 
-    public Color(int index){
-        this(ChooseColor.values()[index]);
+    static Color get(int index){
+        return Color.values()[index];
     }
 
-    @Override
-    public String toString() {
-        if(this.color == ChooseColor.BLACK){
-            return " X ";
-        } else if (this.color == ChooseColor.WHITE) {
-            return " O ";
-        } else if (this.color == ChooseColor.NULL) {
-            return " - ";
-        } else{
-            return Error.WRONG_COLOR.toString();
-        }
+    void write() {
+        Console.instance().write(this.color);
     }
-
 
 }

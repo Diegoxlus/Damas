@@ -18,7 +18,7 @@ public class Player {
 
     }
 
-    void move(){
+    /*void move(){
         Error error;
         Coordinate originCoordinate;
         do{
@@ -30,10 +30,23 @@ public class Player {
             targetCordinate = this.getCordinateTargetToMove();
             error = this.checkTargetCoordinateError(originCoordinate,targetCordinate);
         }
-    }
+    }*/
 
     private Error checkTargetCoordinateError(Coordinate originCoordinate, Coordinate targetCordinate) {
-        
+        Coordinate diference = originCoordinate.getDiference(targetCordinate);
+        Color color = this.color;
+
+        if(diference.getColumn()==1 || diference.getColumn()==-1){
+            if(color.getColor()==Color.ChooseColor.BLACK && diference.getRow()!=-1){
+                return Error.WRONG_COORDINATES;
+            } else if(color.getColor()==Color.ChooseColor.WHITE && diference.getRow()!=1){
+                return Error.WRONG_COORDINATES;
+            } else{
+                return Error.NULL_ERROR;
+            }
+        } else{
+            return Error.NULL_ERROR;
+        }
     }
 
     private Coordinate getCordinateTargetToMove() {
@@ -43,7 +56,7 @@ public class Player {
     Error checkMoveOriginCoordinateError(Coordinate originCoordinate) {
         assert originCoordinate != null;
         Error error = Error.NULL_ERROR;
-        if (!this.checkerBoard.isOccupied(originCoordinate, this.color)) {
+        if (!this.checkerBoard.isOccupied(originCoordinate, new Color(Color.ChooseColor.NULL))) {
             error = Error.NOT_OWNER;
         }
         return error;

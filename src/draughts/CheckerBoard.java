@@ -77,5 +77,18 @@ public class CheckerBoard {
         return this.pieces[coordinate.getRow()][coordinate.getColumn()].getColor();
     }
 
+    boolean isDraughts(){
+        int countWhites=0;
+        int countBlacks=0;
+        for(int i=0;i<HEIGHT;i++){
+            for(int j=0;i<WIDTH;i++){
+                if(this.pieces[i][j].getColor()==Color.ChooseColor.WHITE)){
+                    countWhites++;
+                }
+            }
+        }
+
+    }
+
 
 }

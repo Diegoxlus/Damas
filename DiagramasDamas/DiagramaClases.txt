@@ -17,7 +17,7 @@ class Board
 class draughts.Player
 class WasteStack
 class draughts.Color
-class draughts.Game
+class draughts.Draughts
 class Move
 
 class TokenToToken
@@ -26,8 +26,8 @@ class TokenLeft
 class TokenToWasteStack
 class TokenEatToken
 
-draughts.Game *-down- "2" draughts.Player: Composition
-draughts.Game *-down- "1" Board: Composition
+draughts.Draughts *-down- "2" draughts.Player: Composition
+draughts.Draughts *-down- "1" Board: Composition
 Token *-down- "1" draughts.Color: Composition
 Token <|-down- Dama: Inheritance
 Token <|-down- Superdama: Inheritance

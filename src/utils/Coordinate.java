@@ -17,7 +17,7 @@ public class Coordinate {
         this.column=column;
     }
 
-    protected Coordinate getDiference(Coordinate coordinate){
+    public Coordinate getDiference(Coordinate coordinate){
         return new Coordinate(this.row-coordinate.row,this.column-coordinate.column);
     }
 

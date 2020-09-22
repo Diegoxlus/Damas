@@ -58,4 +58,18 @@ public class Console {
         System.out.println("FORMAT ERROR!!!, "+ "Enter a " + validFormat);
     }
 
+    public char readChar(String message) {
+        char charValue = ' ';
+        boolean ok = false;
+        do {
+            String input = this.readString(message);
+            if (input.length() != 1) {
+                this.writeError("character");
+            } else {
+                charValue = input.charAt(0);
+                ok = true;
+            }
+        } while (!ok);
+        return charValue;
+    }
 }

@@ -6,7 +6,8 @@ enum Message {
     NUMBER_PLAYERS("Enter the number of players"),
     NAME_PLAYERS("Enter the name of player"),
     ENTER_COORDINATE_TO_REMOVE("Enter a coordinate to remove a piece:"),
-    ENTER_COORDINATE_TO_PUT("Enter a coordinate to put a piece:");
+    ENTER_COORDINATE_TO_PUT("Enter a coordinate to put a piece:"),
+    RESUME("Do you want to continue");
 
 
      private String message;
