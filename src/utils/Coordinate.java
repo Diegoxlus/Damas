@@ -17,8 +17,8 @@ public class Coordinate {
         this.column=column;
     }
 
-    protected Direction getDirection(Coordinate coordinate){
-
+    protected Coordinate getDiference(Coordinate coordinate){
+        return new Coordinate(this.row-coordinate.row,this.column-coordinate.column);
     }
 
     public void read(String message) {
