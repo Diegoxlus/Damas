@@ -1,3 +1,7 @@
+package draughts;
+
+import draughts.Color;
+
 public abstract class Piece {
 
     private Color color;

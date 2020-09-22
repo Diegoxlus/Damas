@@ -12,7 +12,7 @@ public class LimitedIntDialog extends WithConsoleModel {
         int value;
         do{
          value = this.console.readInt(message + "[0-" + this.LIMIT +"]");
-         error = new ClosedInterval(this.LIMIT).include(value);
+         error = new ClosedInterval(this.LIMIT).isIncluded(value);
          if(error){
              this.console.writeError("NOT IN RANGE");
          }

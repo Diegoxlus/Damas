@@ -1,3 +1,5 @@
+package draughts;
+
 public class Color {
 
     public enum ChooseColor{

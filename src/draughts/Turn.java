@@ -1,6 +1,4 @@
-import utils.Console;
-import utils.LimitedIntDialog;
-import utils.Message;
+package draughts;
 
 public class Turn {
     static final int NUMBER_PLAYERS = 2;
@@ -8,7 +6,7 @@ public class Turn {
     private int active;
 
     Turn(CheckerBoard checkerBoard){
-        //int numberPlayers = new LimitedIntDialog(Turn.NUMBER_PLAYERS).read(Message.NUMBER_PLAYERS);
+        //int numberPlayers = new LimitedIntDialog(draughts.Turn.NUMBER_PLAYERS).read(Message.NUMBER_PLAYERS);
         this.players = new Player[Turn.NUMBER_PLAYERS];
         for (int i = 0; i< Turn.NUMBER_PLAYERS; i++){
             this.players[i] = this.createPlayer(i,checkerBoard);

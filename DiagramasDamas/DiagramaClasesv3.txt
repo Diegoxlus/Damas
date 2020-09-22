@@ -2,23 +2,23 @@
 
 title Relationships - Modelo de dominio
 
-class King
-class Piece
-class Men
+class draughts.King
+class draughts.Piece
+class draughts.Men
 class Checkerboard
 class Square
 class Position{
 +x
 +y
 }
-class Player
+class draughts.Player
 class WasteStack
-class Color
-class Game
+class draughts.Color
+class draughts.Game
 class Action
-class Movement
+class draughts.Movement
 class Jump
-class Turn
+class draughts.Turn
 
 class Goal
 class AllPiecesCaptured
@@ -30,41 +30,41 @@ class PieceToWaste
 class JumpRight
 class JumpLeft
 
-Game *-down- "2" Player
-Game *-down- "1" Checkerboard
-Game *-down- "1" Turn
-Turn *-down- "2" Player
+draughts.Game *-down- "2" draughts.Player
+draughts.Game *-down- "1" Checkerboard
+draughts.Game *-down- "1" draughts.Turn
+draughts.Turn *-down- "2" draughts.Player
 
-WasteStack o--down- "0..23" Piece
+WasteStack o--down- "0..23" draughts.Piece
 
 
-Piece *-down- "1" Color
-Piece <|-down-  Men
-Piece <|-down- King
+draughts.Piece *-down- "1" draughts.Color
+draughts.Piece <|-down-  draughts.Men
+draughts.Piece <|-down- draughts.King
 
-Action <|-down- Movement
+Action <|-down- draughts.Movement
 Action <|-down- Jump
 
 
-Movement <|-down- MoveLeft
-Movement <|-down- MoveRight
-Movement <|-down- MenUpMen
-Movement <|-down- PieceToWaste
+draughts.Movement <|-down- MoveLeft
+draughts.Movement <|-down- MoveRight
+draughts.Movement <|-down- MenUpMen
+draughts.Movement <|-down- PieceToWaste
 
 Jump <|-down- JumpRight
 Jump <|-down- JumpLeft
 
 
 Checkerboard o--down- "8x8" Square
-Square o--down- "0..1" Piece
+Square o--down- "0..1" draughts.Piece
 Square *-down- "1" Position
 
 
 
 Checkerboard *-down- "1" WasteStack
 
-Player *-down- Goal
-Player -down-> Checkerboard
+draughts.Player *-down- Goal
+draughts.Player -down-> Checkerboard
 Goal <|-down- AllPiecesCaptured
 Goal ..> "*" Action
 Action ..> Position

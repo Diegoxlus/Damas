@@ -1,5 +1,9 @@
+package draughts;
+
 import utils.Console;
-import utils.Message;
+import utils.Coordinate;
+
+import java.nio.charset.CoderResult;
 
 public class CheckerBoard {
 
@@ -19,7 +23,7 @@ public class CheckerBoard {
         this.fillNullPieces();
         for (int i = 0; i <HEIGHT; i++ ){
             for (int j = 0; j<WIDTH; j++){
-
+                this.putBlackOrWhitePiece(i,j);
             }
         }
     }
@@ -35,7 +39,7 @@ public class CheckerBoard {
     }
 
     private void putBlackOrWhitePiece(int i,int j){
-        if(!isEmptySquare(i,j) && !isEmptySquare(i,j)){
+        if(!this.isEmptySquare(i,j) && !this.is4or5row(i)){
             if(i<HEIGHT/2-1){
                 this.pieces[i][j] = new Men(new Color(Color.ChooseColor.BLACK));
             } else if(i>HEIGHT/2){
@@ -49,8 +53,13 @@ public class CheckerBoard {
     private boolean isEmptySquare(int i , int j){
         return (i+j)%2==0;
     }
+
     private boolean is4or5row(int row){
         return row>2&&row<5;
+    }
+
+    boolean isOccupied(Coordinate coordinate,Color color ) {
+        return this.getColorPiece(coordinate) == color;
     }
 
     public void show(){
@@ -61,8 +70,11 @@ public class CheckerBoard {
             for (int j = 0; j<WIDTH;j++){
                 System.out.print(this.pieces[i][j].getColor().toString());
             }
-
         }
+    }
+
+    private Color getColorPiece(Coordinate coordinate){
+        return this.pieces[coordinate.getRow()][coordinate.getColumn()].getColor();
     }
 
 

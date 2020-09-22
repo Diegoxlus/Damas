@@ -14,12 +14,12 @@ class Height{
 class Superdama
 class Dama
 class Board
-class Player
+class draughts.Player
 class WasteStack
-class Color
-class Game
+class draughts.Color
+class draughts.Game
 class Move
-class Turn
+class draughts.Turn
 
 class TokenUpToken
 class TokenRight
@@ -27,15 +27,15 @@ class TokenLeft
 class TokenToWasteStack
 class TokenEatToken
 
-Game *-down- "2" Player
-Game *-down- "1" Board
-Game *-down- "1" Turn
-Turn *-down- "2" Player
+draughts.Game *-down- "2" draughts.Player
+draughts.Game *-down- "1" Board
+draughts.Game *-down- "1" draughts.Turn
+draughts.Turn *-down- "2" draughts.Player
 
 WasteStack o--down- "0..23" Dama
 
 
-Dama *-down- "1" Color
+Dama *-down- "1" draughts.Color
 
 
 Superdama *-up- "2" Dama
@@ -54,6 +54,6 @@ Collection *-down- "1" Height
 Board *-down- "1" Collection
 Board *-down- "1" WasteStack
 
-Player--Collection
-Player --> Move
+draughts.Player--Collection
+draughts.Player --> Move
 @enduml

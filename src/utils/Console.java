@@ -6,6 +6,14 @@ import java.io.InputStreamReader;
 
 public class Console {
 
+    public static Console console;
+
+    public static Console instance() {
+        if (Console.console == null) {
+            Console.console = new Console();
+        }
+        return Console.console;
+    }
     private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public String readString(String message) {
@@ -39,10 +47,15 @@ public class Console {
     }
 
     public void write(String string) {
+        System.out.print(string);
+    }
+
+    public void writeln(String string) {
         System.out.println(string);
     }
 
     public void writeError(String validFormat){
         System.out.println("FORMAT ERROR!!!, "+ "Enter a " + validFormat);
     }
+
 }

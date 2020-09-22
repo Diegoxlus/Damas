@@ -1,3 +1,5 @@
+package draughts;
+
 import utils.Console;
 
 enum Error {
