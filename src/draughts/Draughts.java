@@ -13,10 +13,10 @@ public class Draughts {
             this.turn=new Turn(this.checkerBoard);
             checkerBoard.show();
             do{
-
-            } while()
+                this.turn.play();
+                this.checkerBoard.show();
+            } while (!this.checkerBoard.isDraughts());
         } while(isResumedGame());
-
     }
 
     private boolean isResumedGame(){

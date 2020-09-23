@@ -16,7 +16,7 @@ class WasteStack
 class draughts.Color
 class draughts.Draughts
 class Action
-class draughts.Movement
+class draughts.Action
 class Jump
 class draughts.Turn
 
@@ -42,14 +42,14 @@ draughts.Piece *-down- "1" draughts.Color
 draughts.Piece <|-down-  draughts.Men
 draughts.Piece <|-down- draughts.King
 
-Action <|-down- draughts.Movement
+Action <|-down- draughts.Action
 Action <|-down- Jump
 
 
-draughts.Movement <|-down- MoveLeft
-draughts.Movement <|-down- MoveRight
-draughts.Movement <|-down- MenUpMen
-draughts.Movement <|-down- PieceToWaste
+draughts.Action <|-down- MoveLeft
+draughts.Action <|-down- MoveRight
+draughts.Action <|-down- MenUpMen
+draughts.Action <|-down- PieceToWaste
 
 Jump <|-down- JumpRight
 Jump <|-down- JumpLeft

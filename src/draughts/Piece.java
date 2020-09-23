@@ -13,4 +13,12 @@ public abstract class Piece {
     public Color getColor() {
         return color;
     }
+
+    public String getColorPiece(){
+        return color.toString();
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }

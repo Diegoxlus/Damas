@@ -6,7 +6,6 @@ public class Turn {
     private int active;
 
     Turn(CheckerBoard checkerBoard){
-        //int numberPlayers = new LimitedIntDialog(draughts.Turn.NUMBER_PLAYERS).read(Message.NUMBER_PLAYERS);
         this.players = new Player[Turn.NUMBER_PLAYERS];
         for (int i = 0; i< Turn.NUMBER_PLAYERS; i++){
             this.players[i] = this.createPlayer(i,checkerBoard);
@@ -14,7 +13,7 @@ public class Turn {
         this.active = NUMBER_PLAYERS - (NUMBER_PLAYERS-1);
     }
     private Player createPlayer(int indexColor, CheckerBoard checkerBoard){
-        Player player = new Player(new Color(indexColor), checkerBoard);
+        Player player = new Player(Color.get(indexColor), checkerBoard);
         player.readAndSetName();
         return player;
     }

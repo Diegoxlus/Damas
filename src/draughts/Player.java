@@ -1,7 +1,6 @@
 package draughts;
 
 import utils.Console;
-import utils.Coordinate;
 
 public class Player {
     private String name;
@@ -15,38 +14,68 @@ public class Player {
     }
 
     void play(){
-
-    }
-
-    /*void move(){
-        Error error;
+        Error errorOrigin;
+        Error errorTarget;
         Coordinate originCoordinate;
-        do{
-            originCoordinate = this.getCoordinateOriginToRemove();
-            error = this.checkMoveOriginCoordinateError(originCoordinate);
-        } while (error!= Error.NULL_ERROR);
         Coordinate targetCordinate;
         do{
+            originCoordinate = this.getCoordinateOriginToRemove();
+            errorOrigin = this.checkMoveOriginCoordinateError(originCoordinate);
             targetCordinate = this.getCordinateTargetToMove();
-            error = this.checkTargetCoordinateError(originCoordinate,targetCordinate);
-        }
-    }*/
-
-    private Error checkTargetCoordinateError(Coordinate originCoordinate, Coordinate targetCordinate) {
-        Coordinate diference = originCoordinate.getDiference(targetCordinate);
-        Color color = this.color;
-
-        if(diference.getColumn()==1 || diference.getColumn()==-1){
-            if(color.getColor()==Color.ChooseColor.BLACK && diference.getRow()!=-1){
-                return Error.WRONG_COORDINATES;
-            } else if(color.getColor()==Color.ChooseColor.WHITE && diference.getRow()!=1){
-                return Error.WRONG_COORDINATES;
-            } else{
-                return Error.NULL_ERROR;
-            }
+            errorTarget = this.checkTargetCoordinateError(originCoordinate,targetCordinate);
+        } while (errorOrigin!= Error.NULL_ERROR && errorTarget!=Error.NULL_ERROR);
+        if(this.isJumpOrMovement(originCoordinate,targetCordinate)==Action.JUMP){
+            this.checkerBoard.jump(originCoordinate,targetCordinate);
         } else{
+            this.checkerBoard.move(originCoordinate,targetCordinate);
+        }
+    }
+
+    private Action isJumpOrMovement(Coordinate originCoordinate, Coordinate targetCoordinate){
+        Coordinate diference = originCoordinate.getDiference(targetCoordinate);
+        if(this.checkValidJumpInColumn(diference)){
+            return Action.JUMP;
+        } else if(this.checkValidMovementInColumn(diference)){
+            return Action.MOVEMENT;
+        } else {
+            return Action.NULL_ACTION;
+        }
+    }
+
+    private Error checkTargetCoordinateError(Coordinate originCoordinate, Coordinate targetCoordinate) {
+        if(!this.checkValidMovement(originCoordinate,targetCoordinate)) {
+            return Error.WRONG_COORDINATES;
+        } else {
             return Error.NULL_ERROR;
         }
+    }
+
+    private boolean checkValidMovement(Coordinate originCoordinate, Coordinate targetCordinate){
+        Coordinate diference = originCoordinate.getDiference(targetCordinate);
+        Color color = this.color;
+        return this.checkValidMovementInRow(diference, color) &&
+                ( ( this.checkValidMovementInColumn(diference) &&
+                this.checkIsNullPieceInCheckboard(targetCordinate, Color.NULL_COLOR) ) ||
+                ( this.checkValidJumpInColumn(diference) &&
+                this.checkIsNullPieceInCheckboard(originCoordinate.getIntermediate(targetCordinate), Color.enemyColor(color)) ) );
+    }
+
+    private boolean checkIsNullPieceInCheckboard(Coordinate coordinate, Color color){
+        return this.checkerBoard.pieces[coordinate.getRow()][coordinate.getColumn()].getColor()==color;
+    }
+
+    private boolean checkValidMovementInColumn(Coordinate diference){
+        return diference.getColumn()==1 || diference.getColumn()==-1;
+    }
+
+    private boolean checkValidJumpInColumn(Coordinate diference){
+        return diference.getColumn()==2 || diference.getColumn()==-2;
+    }
+
+    private boolean checkValidMovementInRow(Coordinate diference, Color color){
+        if(color==Color.BLACK_COLOR && (diference.getRow()!=-1 || diference.getRow()!=-2)){
+            return true;
+        } else return color == Color.WHITE_COLOR && (diference.getRow() != 1 || diference.getRow() != 2);
     }
 
     private Coordinate getCordinateTargetToMove() {
@@ -56,7 +85,7 @@ public class Player {
     Error checkMoveOriginCoordinateError(Coordinate originCoordinate) {
         assert originCoordinate != null;
         Error error = Error.NULL_ERROR;
-        if (!this.checkerBoard.isOccupied(originCoordinate, new Color(Color.ChooseColor.NULL))) {
+        if (!this.checkerBoard.isOccupied(originCoordinate, this.color)) {
             error = Error.NOT_OWNER;
         }
         return error;
@@ -72,8 +101,7 @@ public class Player {
 
     private Coordinate getCoordinate(Message message){
         assert message != null;
-
-        Coordinate coordinate = new DraughtCoordinate();
+        Coordinate coordinate = new Coordinate();
         coordinate.read(message.toString());
         return coordinate;
     }
