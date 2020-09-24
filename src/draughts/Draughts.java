@@ -11,7 +11,7 @@ public class Draughts {
         do{
             this.checkerBoard=new CheckerBoard();
             this.turn=new Turn(this.checkerBoard);
-            checkerBoard.show();
+            this.checkerBoard.show();
             do{
                 this.turn.play();
                 this.checkerBoard.show();

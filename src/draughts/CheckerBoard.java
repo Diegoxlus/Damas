@@ -41,8 +41,6 @@ public class CheckerBoard {
                 this.pieces[i][j] = new Men(Color.BLACK_COLOR);
             } else if(i>HEIGHT/2){
                 this.pieces[i][j] = new Men(Color.WHITE_COLOR);
-            } else{
-                new Console().writeError(Error.WRONG_COORDINATES.toString());
             }
         }
     }
@@ -75,7 +73,7 @@ public class CheckerBoard {
         return this.pieces[coordinate.getRow()][coordinate.getColumn()].getColor();
     }
 
-    private void changeCoordinateColor(Coordinate coordinate, Color color){
+    private void changeCoordinateColor(Coordinate coordinate, Color color){//
         this.pieces[coordinate.getRow()][coordinate.getColumn()].setColor(color);
     }
 

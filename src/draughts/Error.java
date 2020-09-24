@@ -22,7 +22,7 @@ enum Error {
 
 	void writeln() {
 		if (this != Error.NULL_ERROR){
-			new Console().write(this.message);
+			new Console().writeln(this.message);
 		}
 	}
 

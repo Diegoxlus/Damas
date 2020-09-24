@@ -4,16 +4,16 @@ import utils.Console;
 
 enum Message {
     NAME_PLAYERS("Enter the name of player: "),
-    ENTER_COORDINATE_TO_REMOVE("Enter a coordinate to remove a piece:"),
-    ENTER_COORDINATE_TO_PUT("Enter a coordinate to put a piece:"),
-    RESUME("Do you want to continue");
+    ENTER_COORDINATE_TO_REMOVE("Enter the origin coordinate:"),
+    ENTER_COORDINATE_TO_PUT("Enter the target coordinate:"),
+    RESUME("Do you want to continue? ");
 
      private String message;
 
      private Message() {
 
      }
-     private Message(String message) {
+     Message(String message) {
          this.message = message;
      }
 
@@ -23,6 +23,10 @@ enum Message {
 
      void writeln() {
          Console.instance().writeln(this.message);
+     }
+
+     public String concat(String name){
+         return this.message+name;
      }
 
      @Override
