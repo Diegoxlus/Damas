@@ -3,7 +3,6 @@ package utils;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-
 public class Console {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -12,8 +11,9 @@ public class Console {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_BLACK = "\u001B[37m";
 
-
     public static Console console;
+
+    private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public static Console instance() {
         if (Console.console == null) {
@@ -21,7 +21,6 @@ public class Console {
         }
         return Console.console;
     }
-    private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public String readString(String message) {
         String input = null;
@@ -45,7 +44,7 @@ public class Console {
             try {
                 input = Integer.parseInt(this.readString(message));
                 ok = true;
-            } catch (Exception ex){
+            } catch (Exception ex) {
                 this.writeError("integer");
             }
         } while (!ok);
@@ -61,8 +60,8 @@ public class Console {
         System.out.println(string);
     }
 
-    public void writeError(String validFormat){
-        System.out.println("FORMAT ERROR!!!, "+ "Enter a " + validFormat);
+    public void writeError(String validFormat) {
+        System.out.println("FORMAT ERROR!!!, " + "Enter a " + validFormat);
     }
 
     public char readChar(String message) {

@@ -4,27 +4,28 @@ import utils.ClosedInterval;
 import utils.Console;
 
 public class Coordinate {
+
     static final ClosedInterval LIMITS = new ClosedInterval(0, CheckerBoard.WIDTH);
 
     private int row;
     private int column;
-    static final String ROW= "Row: ";
-    static final String COLUMN="Column: ";
+    static final String ROW = "Row: ";
+    static final String COLUMN = "Column: ";
 
-    protected Coordinate(){
+    protected Coordinate() {
     }
 
-    protected Coordinate(int row, int column){
-        this.row=row;
-        this.column=column;
+    protected Coordinate(int row, int column) {
+        this.row = row;
+        this.column = column;
     }
 
-    public Coordinate getDiference(Coordinate coordinate){
-        return new Coordinate(this.row-coordinate.row,this.column-coordinate.column);
+    public Coordinate getDiference(Coordinate coordinate) {
+        return new Coordinate(this.row - coordinate.row, this.column - coordinate.column);
     }
 
-    public Coordinate getIntermediate(Coordinate target){
-        return new Coordinate((this.row+target.getRow())/2,(this.column+target.getColumn())/2);
+    public Coordinate getIntermediate(Coordinate coordinate) {
+        return new Coordinate((this.row + coordinate.getRow()) / 2, (this.column + coordinate.getColumn()) / 2);
     }
 
     public void read(String message) {
@@ -46,15 +47,8 @@ public class Coordinate {
         return row;
     }
 
-    public void setRow(int row) {
-        this.row = row;
-    }
-
     public int getColumn() {
         return column;
     }
 
-    public void setColumn(int column) {
-        this.column = column;
-    }
 }

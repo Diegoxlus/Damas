@@ -7,19 +7,19 @@ public class Draughts {
     private CheckerBoard checkerBoard;
     private Turn turn;
 
-    void play(){
-        do{
-            this.checkerBoard=new CheckerBoard();
-            this.turn=new Turn(this.checkerBoard);
+    void play() {
+        do {
+            this.checkerBoard = new CheckerBoard();
+            this.turn = new Turn(this.checkerBoard);
             this.checkerBoard.show();
-            do{
+            do {
                 this.turn.play();
                 this.checkerBoard.show();
             } while (!this.checkerBoard.isDraughts());
-        } while(isResumedGame());
+        } while (isResumedGame());
     }
 
-    private boolean isResumedGame(){
+    private boolean isResumedGame() {
         return new YesNoDialog().read(Message.RESUME.toString());
     }
 

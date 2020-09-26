@@ -31,11 +31,11 @@ public enum Color {
     @Override
     public String toString() {
         if (this.color.equals(Color.BLACK_COLOR.color)) {
-            return Console.ANSI_BLUE+Color.BLACK_COLOR.color+Console.ANSI_RESET;
+            return Console.ANSI_BLUE + Color.BLACK_COLOR.color + Console.ANSI_RESET;
         } else if (this.color.equals(Color.WHITE_COLOR.color)) {
-            return Console.ANSI_CYAN+Color.WHITE_COLOR.color+Console.ANSI_RESET;
+            return Console.ANSI_CYAN + Color.WHITE_COLOR.color + Console.ANSI_RESET;
         } else {
-            return Console.ANSI_BLACK+Color.NULL_COLOR.color+Console.ANSI_RESET;
+            return Console.ANSI_BLACK + Color.NULL_COLOR.color + Console.ANSI_RESET;
         }
     }
 

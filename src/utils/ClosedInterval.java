@@ -4,11 +4,16 @@ public class ClosedInterval {
     private final int MIN;
     private final int MAX;
 
-    public ClosedInterval(int min, int max){
+    public ClosedInterval(int min, int max) {
         this.MIN = min;
         this.MAX = max;
     }
-    ClosedInterval(int max){this(0,max);}
 
-    public boolean isIncluded(int value){return this.MIN<= value && value <= this.MAX ;}
+    ClosedInterval(int max) {
+        this(0, max);
+    }
+
+    public boolean isIncluded(int value) {
+        return this.MIN <= value && value <= this.MAX;
+    }
 }
