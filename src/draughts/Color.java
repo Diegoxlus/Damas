@@ -18,10 +18,6 @@ public enum Color {
         return Color.values()[index];
     }
 
-    void write() {
-        Console.instance().write(this.color);
-    }
-
     static Color enemyColor(Color color) {
         if (color == Color.WHITE_COLOR) {
             return Color.BLACK_COLOR;
@@ -32,15 +28,14 @@ public enum Color {
         }
     }
 
-
     @Override
     public String toString() {
         if (this.color.equals(Color.BLACK_COLOR.color)) {
-            return Color.BLACK_COLOR.color;
+            return Console.ANSI_BLUE+Color.BLACK_COLOR.color+Console.ANSI_RESET;
         } else if (this.color.equals(Color.WHITE_COLOR.color)) {
-            return Color.WHITE_COLOR.color;
+            return Console.ANSI_CYAN+Color.WHITE_COLOR.color+Console.ANSI_RESET;
         } else {
-            return Color.NULL_COLOR.color;
+            return Console.ANSI_BLACK+Color.NULL_COLOR.color+Console.ANSI_RESET;
         }
     }
 

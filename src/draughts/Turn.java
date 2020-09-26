@@ -1,5 +1,7 @@
 package draughts;
 
+import utils.Console;
+
 public class Turn {
     static final int NUMBER_PLAYERS = 2;
     private Player[] players;
@@ -20,6 +22,7 @@ public class Turn {
 
     void play(){
         this.active = (this.active+1) % NUMBER_PLAYERS;
+        Console.instance().writeln(Console.ANSI_PURPLE+Message.TURN + this.getPlayer().getName()+" ( "+ this.getPlayer().getColor()+ " )"+Console.ANSI_RESET);
         this.getPlayer().play();
     }
 

@@ -33,9 +33,11 @@ public class Player {
 
     private Action isJumpOrMovement(Coordinate originCoordinate, Coordinate targetCoordinate){
         Coordinate diference = originCoordinate.getDiference(targetCoordinate);
-        if(this.checkValidJumpInColumn(diference)){
+        Piece originPiece=this.checkerBoard.pieces[originCoordinate.getRow()][originCoordinate.getColumn()];
+
+        if(originPiece.checkValidJumpInColumn(diference)){
             return Action.JUMP;
-        } else if(this.checkValidMovementInColumn(diference)){
+        } else if(originPiece.checkValidMovementInColumn(diference)){
             return Action.MOVEMENT;
         } else {
             return Action.NULL_ACTION;
@@ -53,29 +55,16 @@ public class Player {
     private boolean checkValidMovement(Coordinate originCoordinate, Coordinate targetCordinate){
         Coordinate diference = originCoordinate.getDiference(targetCordinate);
         Color color = this.color;
-        return this.checkValidMovementInRow(diference, color) &&
-                ( ( this.checkValidMovementInColumn(diference) &&
+        Piece originPiece=this.checkerBoard.pieces[originCoordinate.getRow()][originCoordinate.getColumn()];
+        return originPiece.checkValidMovementInRow(diference) &&
+                ( ( originPiece.checkValidMovementInColumn(diference) &&
                 this.checkIsNullPieceInCheckboard(targetCordinate, Color.NULL_COLOR) ) ||
-                ( this.checkValidJumpInColumn(diference) &&
+                ( originPiece.checkValidJumpInColumn(diference) &&
                 this.checkIsNullPieceInCheckboard(originCoordinate.getIntermediate(targetCordinate), Color.enemyColor(color)) ) );
     }
 
     private boolean checkIsNullPieceInCheckboard(Coordinate coordinate, Color color){
         return this.checkerBoard.pieces[coordinate.getRow()][coordinate.getColumn()].getColor()==color;
-    }
-
-    private boolean checkValidMovementInColumn(Coordinate diference){
-        return diference.getColumn()==1 || diference.getColumn()==-1;
-    }
-
-    private boolean checkValidJumpInColumn(Coordinate diference){
-        return diference.getColumn()==2 || diference.getColumn()==-2;
-    }
-
-    private boolean checkValidMovementInRow(Coordinate diference, Color color){
-        if(color==Color.BLACK_COLOR && (diference.getRow()!=-1 || diference.getRow()!=-2)){
-            return true;
-        } else return color == Color.WHITE_COLOR && (diference.getRow() != 1 || diference.getRow() != 2);
     }
 
     private Coordinate getCordinateTargetToMove() {
@@ -106,4 +95,11 @@ public class Player {
         return coordinate;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Color getColor() {
+        return color;
+    }
 }

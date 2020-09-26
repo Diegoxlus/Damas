@@ -4,10 +4,14 @@
     <list default="true" id="400d72e0-6f93-4321-bfdb-2d03374ef6ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/draughts/CheckerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/CheckerBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/draughts/Draughts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/Draughts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/draughts/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/Error.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/draughts/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/draughts/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/King.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/draughts/Men.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/Men.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/draughts/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/draughts/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/draughts/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/draughts/Turn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draughts/Turn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Console.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +119,7 @@
       <workItem from="1600616955590" duration="7540000" />
       <workItem from="1600758585079" duration="6746000" />
       <workItem from="1600846934238" duration="15777000" />
-      <workItem from="1600931958494" duration="2382000" />
+      <workItem from="1600931958494" duration="5723000" />
     </task>
     <task id="LOCAL-00001" summary="Proyecto damas">
       <created>1599819725004</created>
@@ -173,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600891248596</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Funcionando mover y comer ficha">
+      <created>1600934379846</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1600934379846</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +227,7 @@
     <MESSAGE value="Creado el metodo getDiference" />
     <MESSAGE value="Cambiada la clase color a solo enum, falta corregir errores" />
     <MESSAGE value="Funcionando mover y comer fichas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Funcionando mover y comer fichas" />
+    <MESSAGE value="Funcionando mover y comer ficha" />
+    <option name="LAST_COMMIT_MESSAGE" value="Funcionando mover y comer ficha" />
   </component>
 </project>

@@ -21,4 +21,11 @@ public abstract class Piece {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    abstract boolean checkValidMovementInColumn(Coordinate diference);
+
+    abstract boolean checkValidJumpInColumn(Coordinate diference);
+
+    abstract boolean checkValidMovementInRow(Coordinate diference);
+
 }
