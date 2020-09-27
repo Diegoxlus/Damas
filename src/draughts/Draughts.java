@@ -1,26 +1,20 @@
 package draughts;
 
-import utils.YesNoDialog;
+import draughts.models.Game;
+import draughts.views.View;
 
 public class Draughts {
+    private Game game;
 
-    private CheckerBoard checkerBoard;
-    private Turn turn;
+    private View view;
 
-    void play() {
-        do {
-            this.checkerBoard = new CheckerBoard();
-            this.turn = new Turn(this.checkerBoard);
-            this.checkerBoard.show();
-            do {
-                this.turn.play();
-                this.checkerBoard.show();
-            } while (!this.checkerBoard.isDraughts());
-        } while (isResumedGame());
+    Draughts() {
+        this.game = new Game();
+        this.view = new View(this.game);
     }
 
-    private boolean isResumedGame() {
-        return new YesNoDialog().read(Message.RESUME.toString());
+    private void play() {
+        this.view.interact();
     }
 
     public static void main(String[] args) {

@@ -1,8 +1,8 @@
-package draughts;
+package draughts.models;
 
 import utils.Console;
 
-enum Error {
+public enum Error {
 
     NOT_OWNER("There is not a token of yours"),
     WRONG_COORDINATES("The coordinates are wrong"),
@@ -17,7 +17,7 @@ enum Error {
         this.message = message;
     }
 
-    void writeln() {
+    public void writeln() {
         if (this != Error.NULL_ERROR) {
             new Console().writeln(this.message);
         }

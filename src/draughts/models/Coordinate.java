@@ -1,21 +1,20 @@
-package draughts;
+package draughts.models;
 
 import utils.ClosedInterval;
-import utils.Console;
 
 public class Coordinate {
 
-    static final ClosedInterval LIMITS = new ClosedInterval(0, CheckerBoard.WIDTH);
+    static ClosedInterval LIMITS = new ClosedInterval(0, CheckerBoard.WIDTH);
 
     private int row;
     private int column;
     static final String ROW = "Row: ";
     static final String COLUMN = "Column: ";
 
-    protected Coordinate() {
+    public Coordinate() {
     }
 
-    protected Coordinate(int row, int column) {
+    public Coordinate(int row, int column) {
         this.row = row;
         this.column = column;
     }
@@ -28,20 +27,10 @@ public class Coordinate {
         return new Coordinate((this.row + coordinate.getRow()) / 2, (this.column + coordinate.getColumn()) / 2);
     }
 
-    public void read(String message) {
-        assert message != null;
-        Console console = Console.instance();
-        boolean error;
-        do {
-            console.writeln(message);
-            this.row = console.readInt(Coordinate.ROW);
-            this.column = console.readInt(Coordinate.COLUMN);
-            error = !LIMITS.isIncluded(this.row) || !LIMITS.isIncluded(this.column);
-            if (error) {
-                Error.WRONG_COORDINATES.writeln();
-            }
-        } while (error);
+    public boolean validCoordinate() {
+        return LIMITS.isIncluded(this.row) && LIMITS.isIncluded(this.column);
     }
+
 
     public int getRow() {
         return row;

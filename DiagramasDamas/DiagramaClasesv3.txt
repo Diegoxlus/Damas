@@ -2,23 +2,23 @@
 
 title Relationships - Modelo de dominio
 
-class draughts.King
-class draughts.Piece
-class draughts.Men
+class draughts.models.King
+class draughts.models.Piece
+class draughts.models.Men
 class Checkerboard
 class Square
 class Position{
 +x
 +y
 }
-class draughts.Player
+class draughts.models.Player
 class WasteStack
-class draughts.Color
-class draughts.Draughts
+class draughts.models.Color
+class draughts.models.Game
 class Action
-class draughts.Action
+class draughts.models.Action
 class Jump
-class draughts.Turn
+class draughts.models.Turn
 
 class Goal
 class AllPiecesCaptured
@@ -30,41 +30,41 @@ class PieceToWaste
 class JumpRight
 class JumpLeft
 
-draughts.Draughts *-down- "2" draughts.Player
-draughts.Draughts *-down- "1" Checkerboard
-draughts.Draughts *-down- "1" draughts.Turn
-draughts.Turn *-down- "2" draughts.Player
+draughts.models.Game *-down- "2" draughts.models.Player
+draughts.models.Game *-down- "1" Checkerboard
+draughts.models.Game *-down- "1" draughts.models.Turn
+draughts.models.Turn *-down- "2" draughts.models.Player
 
-WasteStack o--down- "0..23" draughts.Piece
+WasteStack o--down- "0..23" draughts.models.Piece
 
 
-draughts.Piece *-down- "1" draughts.Color
-draughts.Piece <|-down-  draughts.Men
-draughts.Piece <|-down- draughts.King
+draughts.models.Piece *-down- "1" draughts.models.Color
+draughts.models.Piece <|-down-  draughts.models.Men
+draughts.models.Piece <|-down- draughts.models.King
 
-Action <|-down- draughts.Action
+Action <|-down- draughts.models.Action
 Action <|-down- Jump
 
 
-draughts.Action <|-down- MoveLeft
-draughts.Action <|-down- MoveRight
-draughts.Action <|-down- MenUpMen
-draughts.Action <|-down- PieceToWaste
+draughts.models.Action <|-down- MoveLeft
+draughts.models.Action <|-down- MoveRight
+draughts.models.Action <|-down- MenUpMen
+draughts.models.Action <|-down- PieceToWaste
 
 Jump <|-down- JumpRight
 Jump <|-down- JumpLeft
 
 
 Checkerboard o--down- "8x8" Square
-Square o--down- "0..1" draughts.Piece
+Square o--down- "0..1" draughts.models.Piece
 Square *-down- "1" Position
 
 
 
 Checkerboard *-down- "1" WasteStack
 
-draughts.Player *-down- Goal
-draughts.Player -down-> Checkerboard
+draughts.models.Player *-down- Goal
+draughts.models.Player -down-> Checkerboard
 Goal <|-down- AllPiecesCaptured
 Goal ..> "*" Action
 Action ..> Position

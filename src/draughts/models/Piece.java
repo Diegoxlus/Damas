@@ -1,4 +1,4 @@
-package draughts;
+package draughts.models;
 
 public abstract class Piece {
 

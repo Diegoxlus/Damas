@@ -14,10 +14,10 @@ class Token
 class Superdama
 class Dama
 class Board
-class draughts.Player
+class draughts.models.Player
 class WasteStack
-class draughts.Color
-class draughts.Draughts
+class draughts.models.Color
+class draughts.models.Game
 class Move
 
 class TokenToToken
@@ -26,9 +26,9 @@ class TokenLeft
 class TokenToWasteStack
 class TokenEatToken
 
-draughts.Draughts *-down- "2" draughts.Player: Composition
-draughts.Draughts *-down- "1" Board: Composition
-Token *-down- "1" draughts.Color: Composition
+draughts.models.Game *-down- "2" draughts.models.Player: Composition
+draughts.models.Game *-down- "1" Board: Composition
+Token *-down- "1" draughts.models.Color: Composition
 Token <|-down- Dama: Inheritance
 Token <|-down- Superdama: Inheritance
 
@@ -48,6 +48,6 @@ Collection *-down- "1" Height: Composition
 Board *-down- "1" Collection: Composition
 Board *-down- "1" WasteStack: Composition
 
-draughts.Player--Collection
-draughts.Player --> Move
+draughts.models.Player--Collection
+draughts.models.Player --> Move
 @enduml

@@ -1,4 +1,4 @@
-package draughts;
+package draughts.models;
 
 public class Men extends Piece {
 
@@ -16,10 +16,10 @@ public class Men extends Piece {
 
     boolean checkValidMovementInRow(Coordinate diference) {
         if (this.getColor() == Color.BLACK_COLOR &&
-                (diference.getRow() != -1 || diference.getRow() != -2)) {
+                (diference.getRow() == -1 || diference.getRow() == -2)) {
             return true;
         } else return this.getColor() == Color.WHITE_COLOR &&
-                (diference.getRow() != 1 || diference.getRow() != 2);
+                (diference.getRow() == 1 || diference.getRow() == 2);
     }
 
 }

@@ -1,6 +1,4 @@
-package draughts;
-
-import utils.Console;
+package draughts.models;
 
 public class CheckerBoard {
 
@@ -46,17 +44,6 @@ public class CheckerBoard {
         return this.getColorPiece(coordinate).equals(color);
     }
 
-    public void show() {
-        Console.instance().write(Console.ANSI_GREEN + "    0  1  2  3  4  5  6  7" + Console.ANSI_RESET);
-        for (int i = 0; i < HEIGHT; i++) {
-            Console.instance().writeln("");
-            Console.instance().write(Console.ANSI_GREEN + i + "  " + Console.ANSI_RESET);
-            for (int j = 0; j < WIDTH; j++) {
-                Console.instance().write(this.pieces[i][j].getColor().toString());
-            }
-        }
-        Console.instance().writeln("");
-    }
 
     private Color getColorPiece(Coordinate coordinate) {
         return this.pieces[coordinate.getRow()][coordinate.getColumn()].getColor();

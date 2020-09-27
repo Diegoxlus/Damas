@@ -1,4 +1,4 @@
-package draughts;
+package draughts.models;
 
 import utils.Console;
 
@@ -8,9 +8,9 @@ public enum Color {
     BLACK_COLOR(" X "),
     NULL_COLOR(" - ");
 
-    private String color;
+    public String color;
 
-    private Color(String color) {
+    Color(String color) {
         this.color = color;
     }
 
@@ -25,17 +25,6 @@ public enum Color {
             return Color.WHITE_COLOR;
         } else {
             return Color.NULL_COLOR;
-        }
-    }
-
-    @Override
-    public String toString() {
-        if (this.color.equals(Color.BLACK_COLOR.color)) {
-            return Console.ANSI_BLUE + Color.BLACK_COLOR.color + Console.ANSI_RESET;
-        } else if (this.color.equals(Color.WHITE_COLOR.color)) {
-            return Console.ANSI_CYAN + Color.WHITE_COLOR.color + Console.ANSI_RESET;
-        } else {
-            return Console.ANSI_BLACK + Color.NULL_COLOR.color + Console.ANSI_RESET;
         }
     }
 

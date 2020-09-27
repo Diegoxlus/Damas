@@ -1,6 +1,4 @@
-package draughts;
-
-import utils.Console;
+package draughts.models;
 
 public class Player {
     private String name;
@@ -13,25 +11,7 @@ public class Player {
         this.name = "";
     }
 
-    void play() {
-        Error errorOrigin;
-        Error errorTarget;
-        Coordinate originCoordinate;
-        Coordinate targetCoordinate;
-        do {
-            originCoordinate = this.getCoordinateOriginToRemove();
-            errorOrigin = this.checkMoveOriginCoordinateError(originCoordinate);
-            targetCoordinate = this.getCordinateTargetToMove();
-            errorTarget = this.checkTargetCoordinateError(originCoordinate, targetCoordinate);
-        } while (errorOrigin != Error.NULL_ERROR && errorTarget != Error.NULL_ERROR);
-        if (this.isJumpOrMovement(originCoordinate, targetCoordinate) == Action.JUMP) {
-            this.checkerBoard.jump(originCoordinate, targetCoordinate);
-        } else {
-            this.checkerBoard.move(originCoordinate, targetCoordinate);
-        }
-    }
-
-    private Action isJumpOrMovement(Coordinate originCoordinate, Coordinate targetCoordinate) {
+    public Action isJumpOrMovement(Coordinate originCoordinate, Coordinate targetCoordinate) {
         Coordinate diference = originCoordinate.getDiference(targetCoordinate);
         Piece originPiece = this.checkerBoard.pieces[originCoordinate.getRow()][originCoordinate.getColumn()];
 
@@ -44,7 +24,7 @@ public class Player {
         }
     }
 
-    private Error checkTargetCoordinateError(Coordinate originCoordinate, Coordinate targetCoordinate) {
+    public Error checkTargetCoordinateError(Coordinate originCoordinate, Coordinate targetCoordinate) {
         if (!this.checkValidMovement(originCoordinate, targetCoordinate)) {
             return Error.WRONG_COORDINATES;
         } else {
@@ -67,12 +47,8 @@ public class Player {
         return this.checkerBoard.pieces[coordinate.getRow()][coordinate.getColumn()].getColor() == color;
     }
 
-    private Coordinate getCordinateTargetToMove() {
-        return this.getCoordinate(Message.ENTER_COORDINATE_TO_PUT);
-    }
 
-    Error checkMoveOriginCoordinateError(Coordinate originCoordinate) {
-        assert originCoordinate != null;
+    public Error checkMoveOriginCoordinateError(Coordinate originCoordinate) {
         Error error = Error.NULL_ERROR;
         if (!this.checkerBoard.isOccupied(originCoordinate, this.color)) {
             error = Error.NOT_OWNER;
@@ -80,23 +56,12 @@ public class Player {
         return error;
     }
 
-    public void readAndSetName() {
-        this.name = new Console().readString(Message.NAME_PLAYERS.toString());
-    }
-
-    Coordinate getCoordinateOriginToRemove() {
-        return this.getCoordinate(Message.ENTER_COORDINATE_TO_REMOVE);
-    }
-
-    private Coordinate getCoordinate(Message message) {
-        assert message != null;
-        Coordinate coordinate = new Coordinate();
-        coordinate.read(message.toString());
-        return coordinate;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Color getColor() {
